@@ -11,16 +11,12 @@ public class GravityObjectKinematic : MonoBehaviour
     [SerializeField]
     private bool isLerping = false;
     [SerializeField]
-    private Vector2 lerpStartPosition;
-    [SerializeField]
     private Vector2 targetPosition = Vector2.positiveInfinity;
-    [SerializeField]
-    private float lerpStartTime;
-    [SerializeField]
-    private float totalLerpTime;
 
     private GravityManager gravityManager;
 
+    private Vector2 velocity;
+    
     private void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -38,23 +34,29 @@ public class GravityObjectKinematic : MonoBehaviour
         gravityManager.UnregisterGravityObject(!isLerping);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (isLerping)
         {
-            float timeSinceLerpStart = Time.time - lerpStartTime;
-            float percentComplete = timeSinceLerpStart / totalLerpTime;
-            transform.position = Vector2.Lerp(lerpStartPosition, targetPosition, percentComplete);
-            if (percentComplete >= 1.0f)
+            velocity = velocity + ( movementDirection * Time.deltaTime * GRAVITY_STRENGTH) ;
+            var newPosition = (Vector2)transform.position + velocity;
+            if (((movementDirection.x < 0f || movementDirection.y < 0f) && newPosition.x <= targetPosition.x && newPosition.y <= targetPosition.y) ||
+                ((movementDirection.x > 0f || movementDirection.y > 0f) && newPosition.x >= targetPosition.x && newPosition.y >= targetPosition.y))
             {
+                transform.position = targetPosition;
                 isLerping = false;
                 gravityManager.GravityObjectDoneMoving();
+            }
+            else
+            {
+                transform.position = newPosition;
             }
         }
     }
 
     public void ChangeDirection(Directions _direction)
     {
+        velocity = Vector2.zero;
         switch (_direction)
         {
             case Directions.UP:
