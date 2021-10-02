@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +31,19 @@ public class GravityManager : MonoBehaviour
             direction = value;
             // invoke when changing events
             OnChangeGravity.Invoke(direction);
+        }
+    }
+
+    public void Update()
+    {
+        var horizontal = Input.GetAxis("Horizontal");
+        var vertical = Input.GetAxis("Vertical");
+        if (horizontal != 0)
+        {
+            ChangeDirection(horizontal > 0 ? Directions.RIGHT : Directions.LEFT);
+        } else if (vertical != 0)
+        {
+            ChangeDirection(vertical > 0 ? Directions.UP : Directions.DOWN);
         }
     }
 
