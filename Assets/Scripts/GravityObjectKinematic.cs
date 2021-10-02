@@ -91,7 +91,7 @@ public class GravityObjectKinematic : MonoBehaviour
                 continue;
             }
 
-            if (hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
+            if (gameObject.CompareTag("Player") && hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
             {
                 targetPosition = hit.collider.gameObject.transform.position;
                 break;
