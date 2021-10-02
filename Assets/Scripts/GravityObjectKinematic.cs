@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 using static GravityManager;
@@ -16,6 +18,9 @@ public class GravityObjectKinematic : MonoBehaviour
     private GravityManager gravityManager;
 
     private Vector2 velocity;
+
+    private List<Vector2> previousPositions = new List<Vector2>();
+    private int lastPositionIndex = -1;
     
     private void Start()
     {
@@ -25,6 +30,13 @@ public class GravityObjectKinematic : MonoBehaviour
         {
             gravityManager.OnChangeGravity.AddListener(this.ChangeDirection);
             gravityManager.RegisterGravityObject();
+        }
+
+        var lifecycleManager = FindObjectOfType<LifeCycleManager>();
+        if (lifecycleManager != null)
+        {
+            lifecycleManager.OnRedo.AddListener(Redo);
+            lifecycleManager.OnUndo.AddListener(Undo);
         }
     }
 
@@ -43,15 +55,20 @@ public class GravityObjectKinematic : MonoBehaviour
             if (((movementDirection.x < 0f || movementDirection.y < 0f) && newPosition.x <= targetPosition.x && newPosition.y <= targetPosition.y) ||
                 ((movementDirection.x > 0f || movementDirection.y > 0f) && newPosition.x >= targetPosition.x && newPosition.y >= targetPosition.y))
             {
-                transform.position = targetPosition;
-                isLerping = false;
-                gravityManager.GravityObjectDoneMoving();
+                ReachedTargetPosition();
             }
             else
             {
                 transform.position = newPosition;
             }
         }
+    }
+
+    private void ReachedTargetPosition()
+    {
+        transform.position = targetPosition;
+        isLerping = false;
+        gravityManager.GravityObjectDoneMoving();
     }
 
     public void ChangeDirection(Directions _direction)
@@ -107,7 +124,41 @@ public class GravityObjectKinematic : MonoBehaviour
             break;
         }
 
+        if (lastPositionIndex < previousPositions.Count - 1)
+        {
+            previousPositions.RemoveRange(lastPositionIndex + 1, previousPositions.Count - (lastPositionIndex - 1));
+        }
+        previousPositions.Add(transform.position);
+        lastPositionIndex++;
+        
         isLerping = true;
+    }
+
+    private void Undo()
+    {
+        if (lastPositionIndex < 0 || isLerping) // islerping shouldn't happen but...
+        {
+            return;
+        }
+
+        if (lastPositionIndex == previousPositions.Count - 1)
+        {
+            previousPositions.Add(transform.position);
+        }
+        
+        transform.position = previousPositions[lastPositionIndex];
+        lastPositionIndex--;
+    }
+
+    private void Redo()
+    {
+        if (lastPositionIndex >= previousPositions.Count - 1 || isLerping)
+        {
+            return;
+        }
+        
+        transform.position = previousPositions[lastPositionIndex + 2];
+        lastPositionIndex ++;
     }
 }
 
