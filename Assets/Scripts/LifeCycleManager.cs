@@ -1,27 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manage LifeCycle of each Level.
-/// Like started or win level
 /// </summary>
 public class LifeCycleManager : MonoBehaviour
 {
-    public UnityEvent OnWin;
-
-    public UnityEvent OnStart;
-
-    // Start is called before the first frame update
-    void Start()
+    // Load the next scene in the build order
+    public void WinLevel()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Win");
+        // TODO: Show UI, then have ui button trigger new scene load.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    private BoxCollider2D collider;
+    private BoxCollider2D coll;
 
     // Prevents us from moving when we hit gravity objects
     [SerializeField] private BoxCollider2D kinematicCollider;
@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         lastGroundedTime = Time.time;
         rigidBody = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
-        Physics2D.IgnoreCollision(collider, kinematicCollider);
+        coll = GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreCollision(coll, kinematicCollider);
     }
 
     // Update is called once per frame
@@ -69,6 +69,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,7 +34,12 @@ public class GravityManager : MonoBehaviour
         }
     }
 
-    public void TestMovement(string direction)
+    public void ChangeDirection(int newDirection)
+    {
+        ChangeDirection((Directions) newDirection);
+    }
+    
+    public void ChangeDirection(Directions newDirection)
     {
         if (!AllGravityObjectsDoneMoving())
         {
@@ -42,23 +47,8 @@ public class GravityManager : MonoBehaviour
         }
 
         doneMovingGravityObjectCount = 0;
-        
-        switch (direction)
-        {
-            case "up":
-                Direction = Directions.UP;
-                break;
-            case "left":
-                Direction = Directions.LEFT;
-                break;
-            case "right":
-                Direction = Directions.RIGHT;
-                break;
-            case "down":
-                Direction = Directions.DOWN;
-                break;
-        }
-    }
+        Direction = newDirection;
+}
 
     public bool AllGravityObjectsDoneMoving()
     {

@@ -27,14 +27,14 @@ public class GravityObjectKinematic : MonoBehaviour
         gravityManager = FindObjectOfType<GravityManager>();
         if (gravityManager != null)
         {
-            gravityManager.OnChangeGravity.AddListener(ChangeDirection);
+            gravityManager.OnChangeGravity.AddListener(this.ChangeDirection);
             gravityManager.RegisterGravityObject();
         }
     }
 
     private void OnDestroy()
     {
-        gravityManager.OnChangeGravity.RemoveListener(ChangeDirection);
+        gravityManager.OnChangeGravity.RemoveListener(this.ChangeDirection);
         gravityManager.UnregisterGravityObject(doneMoving);
     }
 
