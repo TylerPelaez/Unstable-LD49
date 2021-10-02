@@ -107,11 +107,6 @@ public class GravityObjectKinematic : MonoBehaviour
             break;
         }
 
-        var position = transform.position;
-        lerpStartPosition = position;
-        var lerpDistance = Vector2.Distance(targetPosition, position);
-        lerpStartTime = Time.time;
-        totalLerpTime = lerpDistance / GRAVITY_STRENGTH;
         isLerping = true;
     }
 }
