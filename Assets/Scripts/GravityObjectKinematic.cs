@@ -4,26 +4,26 @@ using static GravityManager;
 
 public class GravityObjectKinematic : MonoBehaviour
 {
-    protected Rigidbody2D rb2d;
-
-    public const float TERMINAL_VELOCITY_MAGNITUDE = 10f; 
+    private Collider2D _collider;
     
     [SerializeField] private Vector2 movementDirection;
-    [SerializeField] private Vector2 velocity;
-    [SerializeField] private bool doneMoving;
 
-    private Vector2 previousPosition;
+    [SerializeField]
+    private bool isLerping = false;
+    [SerializeField]
+    private Vector2 lerpStartPosition;
+    [SerializeField]
+    private Vector2 targetPosition = Vector2.positiveInfinity;
+    [SerializeField]
+    private float lerpStartTime;
+    [SerializeField]
+    private float totalLerpTime;
+
     private GravityManager gravityManager;
-    
-    private void Awake()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
 
     private void Start()
     {
-        doneMoving = true;
-        previousPosition = transform.position;
+        _collider = GetComponent<Collider2D>();
         gravityManager = FindObjectOfType<GravityManager>();
         if (gravityManager != null)
         {
@@ -35,62 +35,82 @@ public class GravityObjectKinematic : MonoBehaviour
     private void OnDestroy()
     {
         gravityManager.OnChangeGravity.RemoveListener(this.ChangeDirection);
-        gravityManager.UnregisterGravityObject(doneMoving);
+        gravityManager.UnregisterGravityObject(!isLerping);
     }
 
     private void FixedUpdate()
     {
-        if (previousPosition == (Vector2)transform.position)
+        if (isLerping)
         {
-            if (!doneMoving)
+            float timeSinceLerpStart = Time.time - lerpStartTime;
+            float percentComplete = timeSinceLerpStart / totalLerpTime;
+            transform.position = Vector2.Lerp(lerpStartPosition, targetPosition, percentComplete);
+            if (percentComplete >= 1.0f)
             {
+                isLerping = false;
                 gravityManager.GravityObjectDoneMoving();
-                
             }
-            doneMoving = true;
-            velocity = Vector2.zero;
-            return;
         }
-        previousPosition = transform.position;
-        
-        var acceleration = movementDirection * GRAVITY_STRENGTH * Time.deltaTime;
-        velocity += acceleration;
-        if (velocity.magnitude > TERMINAL_VELOCITY_MAGNITUDE)
-        {
-            velocity = velocity.normalized * TERMINAL_VELOCITY_MAGNITUDE;
-        }
-        
-        var newPosition = (Vector2)transform.position + velocity;
-        rb2d.MovePosition(newPosition);
     }
 
     public void ChangeDirection(Directions _direction)
     {
-        doneMoving = false;
-        velocity = Vector2.zero;
-        previousPosition = Vector2.positiveInfinity; // Just make it not be equal to any real position to reset it
         switch (_direction)
         {
             case Directions.UP:
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 movementDirection = Vector2.up;
                 break;
 
             case Directions.DOWN:
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 movementDirection = Vector2.down;
                 break;
 
             case Directions.LEFT:
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 movementDirection = Vector2.left;
                 break;
 
             case Directions.RIGHT:
-                rb2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 movementDirection = Vector2.right;
                 break;
         }
+        
+        // Now determine target position
+        RaycastHit2D[] hits;
+        hits = Physics2D.RaycastAll(transform.position, movementDirection, 2000f);
+        float totalOffset = 0f;
+        foreach (var hit in hits)
+        {
+            if (hit.collider == _collider)
+            {
+                continue;
+            }
+
+            if (hit.collider.gameObject.CompareTag("Object") || hit.collider.gameObject.CompareTag("Player"))
+            {
+                totalOffset += hit.collider.bounds.size.x;
+                continue;
+            }
+
+            if (hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
+            {
+                targetPosition = hit.collider.gameObject.transform.position;
+                break;
+            }
+            
+            // Must have hit a wall
+            targetPosition = (Vector2) hit.collider.gameObject.transform.position +
+                             (-movementDirection * hit.collider.bounds.extents) +
+                             (-movementDirection * totalOffset) + 
+                             (-movementDirection * _collider.bounds.extents);
+            break;
+        }
+
+        var position = transform.position;
+        lerpStartPosition = position;
+        var lerpDistance = Vector2.Distance(targetPosition, position);
+        lerpStartTime = Time.time;
+        totalLerpTime = lerpDistance / GRAVITY_STRENGTH;
+        isLerping = true;
     }
 }
 
