@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private BoxCollider2D collider;
-    private Vector2 startPosition;
+
+    // Prevents us from moving when we hit gravity objects
+    [SerializeField] private BoxCollider2D kinematicCollider;
     
     private float dirX = 0f;
     
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private LayerMask jumpableGround;
 
     private float lastGroundedTime = Time.time;
+    [SerializeField]
     private bool isGrounded = false;
     
     
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
-        startPosition = gameObject.transform.position;
+        Physics2D.IgnoreCollision(collider, kinematicCollider);
     }
 
     // Update is called once per frame
@@ -52,8 +53,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Debug Reset"))
         {
-            transform.position = startPosition;
-            rigidBody.velocity = Vector2.zero;
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 

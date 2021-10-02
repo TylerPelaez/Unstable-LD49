@@ -18,6 +18,8 @@ public class GravityObject : MonoBehaviour
     [Tooltip("Directorion of movement")]
     public Directions direction = Directions.STOP;
 
+    [SerializeField] private BoxCollider2D kinematicCollider;
+
     private void Awake()
     {
         this.rb2d = GetComponent<Rigidbody2D>();
@@ -28,6 +30,8 @@ public class GravityObject : MonoBehaviour
         var gravityManager = FindObjectOfType<GravityManager>();
         if(gravityManager != null)
             gravityManager.OnChangeGravity.AddListener(() => this.Move(gravityManager.Direction));
+        
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(),kinematicCollider);
     }
 
     public void Move(Directions direction)
