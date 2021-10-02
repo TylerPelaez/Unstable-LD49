@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityObject : MonoBehaviour
-{
-    public enum Directions {STOP = 0, UP = 1, DOWN = 2, LEFT = 3, RIGHT = 4}
+using static GravityManager;
 
+public class GravityObjectDynamic : MonoBehaviour
+{
     [Tooltip("Speed movement")]
     [SerializeField] private float _speed = 5.0f;
 
@@ -16,7 +14,7 @@ public class GravityObject : MonoBehaviour
     public Vector2 diretion2move;
     
     [Tooltip("Directorion of movement")]
-    public Directions direction = Directions.STOP;
+    public Directions direction = Directions.DOWN;
 
     [SerializeField] private BoxCollider2D kinematicCollider;
 
@@ -29,7 +27,7 @@ public class GravityObject : MonoBehaviour
     {
         var gravityManager = FindObjectOfType<GravityManager>();
         if(gravityManager != null)
-            gravityManager.OnChangeGravity.AddListener(() => this.Move(gravityManager.Direction));
+            gravityManager.OnChangeGravity.AddListener(Move);
         
         Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(),kinematicCollider);
     }
@@ -38,17 +36,11 @@ public class GravityObject : MonoBehaviour
     {
         switch (direction)
         {
-            case Directions.STOP:
-                Move(Vector2.zero);
-                break;
 
             case Directions.UP:
                 Move(Vector2.up);
                 break;
 
-            case Directions.DOWN:
-                Move(-Vector2.up);
-                break;
 
             case Directions.LEFT:
                 Move(Vector2.left);
@@ -59,7 +51,8 @@ public class GravityObject : MonoBehaviour
                 break;
 
             default:
-                Move(Vector2.zero);
+            case Directions.DOWN:
+                Move(-Vector2.up);
                 break;
         }
     }
@@ -67,6 +60,5 @@ public class GravityObject : MonoBehaviour
     void Move(Vector2 direction)
     {
         this.rb2d.velocity = direction * Speed;
-        Debug.Log("Move " + direction);
     }
 }

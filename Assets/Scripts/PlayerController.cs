@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask jumpableGround;
 
-    private float lastGroundedTime = Time.time;
+    private float lastGroundedTime;
     [SerializeField]
     private bool isGrounded = false;
     
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lastGroundedTime = Time.time;
         rigidBody = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         Physics2D.IgnoreCollision(collider, kinematicCollider);
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Debug Reset"))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

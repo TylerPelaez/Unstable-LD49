@@ -1,15 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GravityManager : MonoBehaviour
 {
-    public UnityEvent OnChangeGravity;
+    public enum Directions
+    {
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3
+    }
 
-    private GravityObject.Directions direction;
+    public const float GRAVITY_STRENGTH = 1f;
 
-    public GravityObject.Directions Direction {
+    public UnityEvent<Directions> OnChangeGravity;
+
+    private Directions direction;
+
+    [SerializeField] private int registeredGravityObjectCount;
+    [SerializeField] private int doneMovingGravityObjectCount = 0;
+    
+    public Directions Direction {
         get
         {
             return direction;
@@ -18,32 +30,58 @@ public class GravityManager : MonoBehaviour
         {
             direction = value;
             // invoke when changing events
-            OnChangeGravity.Invoke();
+            OnChangeGravity.Invoke(direction);
         }
     }
 
     public void TestMovement(string direction)
     {
+        if (!AllGravityObjectsDoneMoving())
+        {
+            return;
+        }
+
+        doneMovingGravityObjectCount = 0;
+        
         switch (direction)
         {
             case "up":
-                Direction = GravityObject.Directions.UP;
-                break;
-            case "down":
-                Direction = GravityObject.Directions.DOWN;
+                Direction = Directions.UP;
                 break;
             case "left":
-                Direction = GravityObject.Directions.LEFT;
+                Direction = Directions.LEFT;
                 break;
             case "right":
-                Direction = GravityObject.Directions.RIGHT;
+                Direction = Directions.RIGHT;
                 break;
-            case "stop":
-                Direction = GravityObject.Directions.STOP;
-                break;
-            default:
-                Direction = GravityObject.Directions.STOP;
+            case "down":
+                Direction = Directions.DOWN;
                 break;
         }
+    }
+
+    public bool AllGravityObjectsDoneMoving()
+    {
+        return doneMovingGravityObjectCount == registeredGravityObjectCount;
+    }
+    
+    public void RegisterGravityObject()
+    {
+        registeredGravityObjectCount++;
+        doneMovingGravityObjectCount++;
+    }
+    
+    public void UnregisterGravityObject(bool doneMoving)
+    {
+        registeredGravityObjectCount--;
+        if (doneMoving)
+        {
+            doneMovingGravityObjectCount--;
+        }
+    }
+
+    public void GravityObjectDoneMoving()
+    {
+        doneMovingGravityObjectCount++;
     }
 }
