@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class UIController : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
+    public GameObject mainUI;
+    public GameObject winScreenUI;
+    
     private static readonly Color GREYEDOUT_TINT = new Color(0.2941177f, 0.2666667f, 0.2666667f, 1f);
 
     private static readonly ManipulatorActivationFilter DEFAULT_FILTER = new ManipulatorActivationFilter{ button = MouseButton.LeftMouse };
@@ -19,7 +22,7 @@ public class UIController : MonoBehaviour
     private LifeCycleManager lifeCycleManager;
     void Start()
     {
-        var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+        var rootVisualElement = mainUI.GetComponent<UIDocument>().rootVisualElement;
 
         undoButton = rootVisualElement.Q<Button>("UndoButton");
         restartButton = rootVisualElement.Q<Button>("RestartButton");

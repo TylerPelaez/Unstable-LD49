@@ -81,7 +81,7 @@ public class LifeCycleManager : MonoBehaviour
     
     public void Undo()
     {
-        if (!gravityManager.AllGravityObjectsDoneMoving() && CanUndo())
+        if (!gravityManager.AllGravityObjectsDoneMoving() || !CanUndo())
         {
             return;
         }
@@ -99,7 +99,7 @@ public class LifeCycleManager : MonoBehaviour
     
     public void Redo()
     {
-        if (!CanRedo() && gravityManager.AllGravityObjectsDoneMoving())
+        if (!CanRedo() || !gravityManager.AllGravityObjectsDoneMoving())
         {
             return;
         }
