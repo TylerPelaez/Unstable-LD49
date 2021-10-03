@@ -3,6 +3,7 @@
         <ui:VisualElement name="TopBarContainer" style="height: 15%; flex-direction: row; align-items: flex-end; color: rgb(255, 255, 255); bottom: 10px;">
             <ui:Label text="003" display-tooltip-when-elided="true" enable-rich-text="false" name="MoveCount" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 35px; -unity-text-align: lower-left; height: 100px;" />
             <ui:Label text="MOVES" display-tooltip-when-elided="true" enable-rich-text="false" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 15px; -unity-text-align: lower-left; bottom: 5px; height: 100px;" />
+            <ui:Button text="MENU" display-tooltip-when-elided="true" style="background-color: rgba(88, 88, 88, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 25px; color: rgba(255, 255, 255, 255); left: 48%; right: auto; width: auto; top: 1px;" />
         </ui:VisualElement>
         <ui:VisualElement name="GameContainer" style="height: 65%;">
             <ui:VisualElement name="RectangleBorder" style="height: 92%; background-image: url(&apos;/Assets/Sprites/Rectangle.png&apos;); -unity-background-scale-mode: stretch-to-fill;" />
