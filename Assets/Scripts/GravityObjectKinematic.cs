@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,9 +24,14 @@ public class GravityObjectKinematic : MonoBehaviour
     private int lastPositionIndex = -1;
 
     private bool goingToWin = false;
+
+    private Vector3 previousState;
+    private Vector3 currentState;
     
     private void Start()
     {
+        previousState = transform.position;
+        currentState = transform.position;
         _collider = GetComponent<Collider2D>();
         gravityManager = FindObjectOfType<GravityManager>();
         if (gravityManager != null)
@@ -48,28 +54,55 @@ public class GravityObjectKinematic : MonoBehaviour
         gravityManager.UnregisterGravityObject(!isLerping);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isLerping)
         {
-            velocity = velocity + ( movementDirection * Time.deltaTime * GRAVITY_STRENGTH) ;
+            previousState = currentState;
+            
+            velocity = velocity + ( movementDirection * Time.fixedDeltaTime * GRAVITY_STRENGTH) ;
             var newPosition = (Vector2)transform.position + velocity;
-            if (((movementDirection.x < 0f || movementDirection.y < 0f) && newPosition.x <= targetPosition.x && newPosition.y <= targetPosition.y) ||
-                ((movementDirection.x > 0f || movementDirection.y > 0f) && newPosition.x >= targetPosition.x && newPosition.y >= targetPosition.y))
+            // Avert your eyes if you don't want to go blind
+            if (
+                (
+                    (movementDirection.x < 0f || movementDirection.y < 0f) && 
+                    (newPosition.x < targetPosition.x || Mathf.Approximately(newPosition.x, targetPosition.x)) && 
+                    (newPosition.y < targetPosition.y || Mathf.Approximately(newPosition.y, targetPosition.y))
+                ) ||
+                (
+                    (movementDirection.x > 0f || movementDirection.y > 0f) && 
+                    (newPosition.x > targetPosition.x || Mathf.Approximately(newPosition.x, targetPosition.x)) && 
+                    (newPosition.y > targetPosition.y || Mathf.Approximately(newPosition.y, targetPosition.y))
+                )
+            )
             {
                 ReachedTargetPosition();
             }
             else
             {
-                transform.position = newPosition;
+                currentState = newPosition;
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (isLerping)
+        {
+            float alpha = (Time.time - Time.fixedTime) / Time.fixedDeltaTime;
+            Vector3 lerpState = Vector3.Lerp(previousState, currentState, alpha);
+            transform.position = lerpState;
+
         }
     }
 
     private void ReachedTargetPosition()
     {
         transform.position = targetPosition;
+        velocity = Vector2.zero;
         isLerping = false;
+        currentState = targetPosition;
+        previousState = targetPosition;
         gravityManager.GravityObjectDoneMoving();
         if (goingToWin)
         {

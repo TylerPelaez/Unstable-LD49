@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
-    private const float extentsToSizeRatio = 1.7222f; // Magic!
+    private const float extentsToSizeRatio = 2.21428f; // Magic!
     
     private Vector3 startPosition; // I assume we might want it, idk
     

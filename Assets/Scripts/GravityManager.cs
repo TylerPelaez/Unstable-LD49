@@ -13,7 +13,7 @@ public class GravityManager : MonoBehaviour
         DEFAULT = 4,
     }
 
-    public const float GRAVITY_STRENGTH = .1f;
+    public const float GRAVITY_STRENGTH = 1f;
 
     public UnityEvent<Directions> OnChangeGravity;
 
