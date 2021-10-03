@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
-    private static readonly Color DEFAULT_TINT = new Color(1f, 1f, 1f, 1f);
     private static readonly Color GREYEDOUT_TINT = new Color(0.2941177f, 0.2666667f, 0.2666667f, 1f);
 
     private static readonly ManipulatorActivationFilter DEFAULT_FILTER = new ManipulatorActivationFilter{ button = MouseButton.LeftMouse };
@@ -14,8 +13,8 @@ public class UIController : MonoBehaviour
     private Button undoButton;
     private Button restartButton;
     private Button redoButton;
-
     private Button menuButton;
+    private Label movesLeftLabel;
 
     private LifeCycleManager lifeCycleManager;
     void Start()
@@ -26,6 +25,7 @@ public class UIController : MonoBehaviour
         restartButton = rootVisualElement.Q<Button>("RestartButton");
         redoButton = rootVisualElement.Q<Button>("RedoButton");
         menuButton = rootVisualElement.Q<Button>("MenuButton");
+        movesLeftLabel = rootVisualElement.Q<Label>("MoveCount");
 
         lifeCycleManager = FindObjectOfType<LifeCycleManager>();
         if (lifeCycleManager != null)
@@ -46,6 +46,17 @@ public class UIController : MonoBehaviour
     {
         UpdateButton(redoButton, lifeCycleManager.CanRedo());
         UpdateButton(undoButton, lifeCycleManager.CanUndo());
+
+        int movesLeft = lifeCycleManager.GetMovesLeft();
+        movesLeftLabel.text = movesLeft.ToString().PadLeft(3, '0');;
+        if (movesLeft == 0)
+        {
+            movesLeftLabel.style.color = Color.red;
+        }
+        else
+        {
+            movesLeftLabel.style.color = Color.white;
+        }
     }
 
     private void UpdateButton(Button button, bool active)
@@ -55,7 +66,7 @@ public class UIController : MonoBehaviour
             if (button.clickable.activators.Count == 0)
             {
                 button.clickable.activators.Add(DEFAULT_FILTER);
-                button.style.unityBackgroundImageTintColor = DEFAULT_TINT;
+                button.style.unityBackgroundImageTintColor = Color.white;
             }       
         }
         else

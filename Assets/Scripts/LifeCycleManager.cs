@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+using static GravityManager;
+
 /// <summary>
 /// Manage LifeCycle of each Level.
 /// </summary>
 public class LifeCycleManager : MonoBehaviour
 {
+    public int maxMoves = 0;
+    
     public UnityEvent OnUndo;
     public UnityEvent OnRedo;
 
-    private List<GravityManager.Directions> pastMoves = new List<GravityManager.Directions>();
+    private List<Directions> pastMoves = new List<Directions>();
     private int lastMoveIndex = -1;
 
     private GravityManager gravityManager;
@@ -42,6 +46,19 @@ public class LifeCycleManager : MonoBehaviour
         {
             RestartLevel();
         }
+
+        if (GetMovesLeft() > 0)
+        {
+            var horizontal = Input.GetAxis("Horizontal");
+            var vertical = Input.GetAxis("Vertical");
+            if (horizontal != 0)
+            {
+                gravityManager.ChangeDirection(horizontal > 0 ? Directions.RIGHT : Directions.LEFT);
+            } else if (vertical != 0)
+            {
+                gravityManager.ChangeDirection(vertical > 0 ? Directions.UP : Directions.DOWN);
+            }
+        }
     }
 
     // Load the next scene in the build order
@@ -69,6 +86,8 @@ public class LifeCycleManager : MonoBehaviour
             return;
         }
         
+        Debug.Log(lastMoveIndex);
+        
         OnUndo.Invoke();
         lastMoveIndex--;
     }
@@ -89,7 +108,7 @@ public class LifeCycleManager : MonoBehaviour
         lastMoveIndex++;
     }
 
-    private void OnChangeGravity(GravityManager.Directions direction)
+    private void OnChangeGravity(Directions direction)
     {
         if (lastMoveIndex < pastMoves.Count - 1)
         {
@@ -97,5 +116,10 @@ public class LifeCycleManager : MonoBehaviour
         }
         pastMoves.Add(direction);
         lastMoveIndex += 1;
+    }
+
+    public int GetMovesLeft()
+    {
+        return maxMoves - (lastMoveIndex + 1);
     }
 }

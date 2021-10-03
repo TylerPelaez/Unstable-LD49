@@ -34,24 +34,6 @@ public class GravityManager : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        var horizontal = Input.GetAxis("Horizontal");
-        var vertical = Input.GetAxis("Vertical");
-        if (horizontal != 0)
-        {
-            ChangeDirection(horizontal > 0 ? Directions.RIGHT : Directions.LEFT);
-        } else if (vertical != 0)
-        {
-            ChangeDirection(vertical > 0 ? Directions.UP : Directions.DOWN);
-        }
-    }
-
-    public void ChangeDirection(int newDirection)
-    {
-        ChangeDirection((Directions) newDirection);
-    }
-    
     public void ChangeDirection(Directions newDirection)
     {
         if (!AllGravityObjectsDoneMoving() || newDirection == direction)
