@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GenerateColliders : MonoBehaviour
+public class TileMapManager : MonoBehaviour
 {
     public GameObject ColliderToCreate;
     
@@ -14,7 +14,8 @@ public class GenerateColliders : MonoBehaviour
 
         var tilemapSize = tilemap.cellBounds;
 
-        Debug.Log(tilemapSize);
+        Debug.Log(tilemap.localBounds);
+
         for (int i = tilemapSize.x; i < tilemapSize.xMax; i++)
         {
             for (int j = tilemapSize.y; j < tilemapSize.yMax; j++)
@@ -29,6 +30,11 @@ public class GenerateColliders : MonoBehaviour
                 Instantiate(ColliderToCreate, worldPos, Quaternion.identity);
             }
         }
-        
+    }
+
+    public Bounds GetTilemapBounds()
+    {
+        var tilemap = GetComponent<Tilemap>();
+        return tilemap.localBounds;
     }
 }

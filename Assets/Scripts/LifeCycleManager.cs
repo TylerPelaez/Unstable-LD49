@@ -79,7 +79,6 @@ public class LifeCycleManager : MonoBehaviour
     public void WinLevel()
     {
         won = true;
-        Debug.Log("hello?");
         OnWin.Invoke();
     }
 
