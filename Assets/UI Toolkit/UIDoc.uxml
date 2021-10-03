@@ -4,7 +4,9 @@
         <ui:VisualElement name="GameContainer" style="height: 65%;">
             <ui:VisualElement name="RectangleBorder" style="height: 92%; background-image: url(&apos;/Assets/Sprites/Rectangle.png&apos;); -unity-background-scale-mode: stretch-to-fill;" />
             <ui:VisualElement style="height: 8%; flex-direction: row; justify-content: center;">
-                <ui:VisualElement style="height: 100%; width: 37%; background-color: rgb(57, 64, 101); border-left-color: rgb(57, 64, 101); border-right-color: rgb(57, 64, 101); border-top-color: rgb(57, 64, 101); border-bottom-color: rgb(57, 64, 101); border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;" />
+                <ui:VisualElement style="height: 100%; width: 37%; background-color: rgb(57, 64, 101); border-left-color: rgb(57, 64, 101); border-right-color: rgb(57, 64, 101); border-top-color: rgb(57, 64, 101); border-bottom-color: rgb(57, 64, 101); border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; flex-direction: row; justify-content: center; align-items: center;">
+                    <ui:Label text="World 3" display-tooltip-when-elided="true" name="WorldLabel" enable-rich-text="false" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-style: bold; font-size: 19px; color: rgb(255, 255, 255); -unity-font-definition: resource(&apos;FontAssets/DynamicOSFontAssets/GlobalFallback/OSX/Arial SDF&apos;);" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ButtonContainer" style="height: 20%;">
