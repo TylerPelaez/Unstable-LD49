@@ -54,7 +54,7 @@ public class GravityManager : MonoBehaviour
     
     public void ChangeDirection(Directions newDirection)
     {
-        if (!AllGravityObjectsDoneMoving())
+        if (!AllGravityObjectsDoneMoving() || newDirection == direction)
         {
             return;
         }

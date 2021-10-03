@@ -82,7 +82,6 @@ public class LifeCycleManager : MonoBehaviour
     {
         if (!CanRedo() && gravityManager.AllGravityObjectsDoneMoving())
         {
-            Debug.LogError("Cant redo? How happen");
             return;
         }
         
@@ -94,7 +93,7 @@ public class LifeCycleManager : MonoBehaviour
     {
         if (lastMoveIndex < pastMoves.Count - 1)
         {
-            pastMoves.RemoveRange(lastMoveIndex + 1, pastMoves.Count - (lastMoveIndex - 1));
+            pastMoves.RemoveRange(lastMoveIndex + 1, pastMoves.Count - (lastMoveIndex + 1));
         }
         pastMoves.Add(direction);
         lastMoveIndex += 1;

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -126,7 +125,7 @@ public class GravityObjectKinematic : MonoBehaviour
 
         if (lastPositionIndex < previousPositions.Count - 1)
         {
-            previousPositions.RemoveRange(lastPositionIndex + 1, previousPositions.Count - (lastPositionIndex - 1));
+            previousPositions.RemoveRange(lastPositionIndex + 1, previousPositions.Count - (lastPositionIndex + 1));
         }
         previousPositions.Add(transform.position);
         lastPositionIndex++;
