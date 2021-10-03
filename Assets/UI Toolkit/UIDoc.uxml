@@ -10,16 +10,10 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ButtonContainer" style="height: 20%;">
-            <ui:VisualElement style="flex-direction: row; justify-content: space-between; height: 45%; align-items: center; top: 18%; left: 12%; right: 12%;">
-                <ui:VisualElement style="width: 15%; height: 100%;">
-                    <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="UndoButton" style="background-image: url(&apos;/Assets/Sprites/undobutton.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 100%; height: 100%;" />
-                </ui:VisualElement>
-                <ui:VisualElement style="width: 15%; height: 100%;">
-                    <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="RestartButton" style="background-image: url(&apos;/Assets/Sprites/restart.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 100%; height: 100%;" />
-                </ui:VisualElement>
-                <ui:VisualElement style="width: 15%; height: 100%;">
-                    <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="RedoButton" style="background-image: url(&apos;/Assets/Sprites/redobutton.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 100%; height: 100%;" />
-                </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; height: 45%; align-items: center; top: 18%; left: 12%; right: 12%; width: 76%;">
+                <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="UndoButton" style="background-image: url(&apos;/Assets/Sprites/undobutton.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 20%; height: 100%;" />
+                <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="RestartButton" style="background-image: url(&apos;/Assets/Sprites/restart.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 20%; height: 100%;" />
+                <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" name="RedoButton" style="background-image: url(&apos;/Assets/Sprites/redobutton.png&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(255, 255, 255); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); width: 20%; height: 100%;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
