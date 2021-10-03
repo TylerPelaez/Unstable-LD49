@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Serialization;
 using static GravityManager;
 
 /// <summary>
@@ -11,14 +11,28 @@ using static GravityManager;
 /// </summary>
 public class LifeCycleManager : MonoBehaviour
 {
+    public enum Score
+    {
+        LOW,
+        MEDIUM,
+        HIGH
+    }
+    
+    public int highScoreMaxMoveCount;
+    public int midScoreMaxMoveCount;
+    
     public UnityEvent OnUndo;
     public UnityEvent OnRedo;
-
+    public UnityEvent OnWin;
+    
+    
     private List<Directions> pastMoves = new List<Directions>();
     private int lastMoveIndex = -1;
 
     private GravityManager gravityManager;
 
+    private bool won = false;
+    
     public void Start()
     {
         gravityManager = FindObjectOfType<GravityManager>();
@@ -30,6 +44,11 @@ public class LifeCycleManager : MonoBehaviour
 
     private void Update()
     {
+        if (won)
+        {
+            return;
+        }
+        
         if (Input.GetButton("Modifier"))
         {
             if (Input.GetButtonDown("ZUNDO") && CanUndo())
@@ -59,8 +78,13 @@ public class LifeCycleManager : MonoBehaviour
     // Load the next scene in the build order
     public void WinLevel()
     {
-        Debug.Log("Win");
-        // TODO: Show UI, then have ui button trigger new scene load.
+        won = true;
+        Debug.Log("hello?");
+        OnWin.Invoke();
+    }
+
+    public void GotoNextLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -116,5 +140,20 @@ public class LifeCycleManager : MonoBehaviour
     public int GetMoveCount()
     {
         return lastMoveIndex + 1;
+    }
+
+    public Score GetScore()
+    {
+        var moveCount = GetMoveCount();
+        if (moveCount <= highScoreMaxMoveCount)
+        {
+            return Score.HIGH;
+        }
+        if (moveCount <= midScoreMaxMoveCount)
+        {
+            return Score.MEDIUM;
+        }
+
+        return Score.LOW;
     }
 }

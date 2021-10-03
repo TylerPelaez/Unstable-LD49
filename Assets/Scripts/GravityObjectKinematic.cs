@@ -14,12 +14,15 @@ public class GravityObjectKinematic : MonoBehaviour
     [SerializeField]
     private Vector2 targetPosition = Vector2.positiveInfinity;
 
+    private LifeCycleManager lifecycleManager;
     private GravityManager gravityManager;
 
     private Vector2 velocity;
 
     private List<Vector2> previousPositions = new List<Vector2>();
     private int lastPositionIndex = -1;
+
+    private bool goingToWin = false;
     
     private void Start()
     {
@@ -31,7 +34,7 @@ public class GravityObjectKinematic : MonoBehaviour
             gravityManager.RegisterGravityObject();
         }
 
-        var lifecycleManager = FindObjectOfType<LifeCycleManager>();
+        lifecycleManager = FindObjectOfType<LifeCycleManager>();
         if (lifecycleManager != null)
         {
             lifecycleManager.OnRedo.AddListener(Redo);
@@ -68,6 +71,10 @@ public class GravityObjectKinematic : MonoBehaviour
         transform.position = targetPosition;
         isLerping = false;
         gravityManager.GravityObjectDoneMoving();
+        if (goingToWin)
+        {
+            lifecycleManager.WinLevel();
+        }
     }
 
     public void ChangeDirection(Directions _direction)
@@ -112,6 +119,7 @@ public class GravityObjectKinematic : MonoBehaviour
             if (gameObject.CompareTag("Player") && hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
             {
                 targetPosition = hit.collider.gameObject.transform.position;
+                goingToWin = true;
                 break;
             }
             
