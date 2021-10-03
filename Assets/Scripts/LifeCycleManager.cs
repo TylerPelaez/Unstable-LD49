@@ -11,8 +11,6 @@ using static GravityManager;
 /// </summary>
 public class LifeCycleManager : MonoBehaviour
 {
-    public int maxMoves = 0;
-    
     public UnityEvent OnUndo;
     public UnityEvent OnRedo;
 
@@ -46,18 +44,15 @@ public class LifeCycleManager : MonoBehaviour
         {
             RestartLevel();
         }
-
-        if (GetMovesLeft() > 0)
+        
+        var horizontal = Input.GetAxis("Horizontal");
+        var vertical = Input.GetAxis("Vertical");
+        if (horizontal != 0)
         {
-            var horizontal = Input.GetAxis("Horizontal");
-            var vertical = Input.GetAxis("Vertical");
-            if (horizontal != 0)
-            {
-                gravityManager.ChangeDirection(horizontal > 0 ? Directions.RIGHT : Directions.LEFT);
-            } else if (vertical != 0)
-            {
-                gravityManager.ChangeDirection(vertical > 0 ? Directions.UP : Directions.DOWN);
-            }
+            gravityManager.ChangeDirection(horizontal > 0 ? Directions.RIGHT : Directions.LEFT);
+        } else if (vertical != 0)
+        {
+            gravityManager.ChangeDirection(vertical > 0 ? Directions.UP : Directions.DOWN);
         }
     }
 
@@ -118,8 +113,8 @@ public class LifeCycleManager : MonoBehaviour
         lastMoveIndex += 1;
     }
 
-    public int GetMovesLeft()
+    public int GetMoveCount()
     {
-        return maxMoves - (lastMoveIndex + 1);
+        return lastMoveIndex + 1;
     }
 }

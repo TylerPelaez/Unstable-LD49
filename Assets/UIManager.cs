@@ -50,16 +50,8 @@ public class UIManager : MonoBehaviour
         UpdateButton(redoButton, lifeCycleManager.CanRedo());
         UpdateButton(undoButton, lifeCycleManager.CanUndo());
 
-        int movesLeft = lifeCycleManager.GetMovesLeft();
-        movesLeftLabel.text = movesLeft.ToString().PadLeft(3, '0');;
-        if (movesLeft == 0)
-        {
-            movesLeftLabel.style.color = Color.red;
-        }
-        else
-        {
-            movesLeftLabel.style.color = Color.white;
-        }
+        int moveCount = lifeCycleManager.GetMoveCount();
+        movesLeftLabel.text = moveCount.ToString().PadLeft(3, '0');
     }
 
     private void UpdateButton(Button button, bool active)
