@@ -171,6 +171,9 @@ public class GravityObjectKinematic : MonoBehaviour
         previousPositions.Add(transform.position);
         lastPositionIndex++;
         
+        previousState = transform.position;
+        currentState = transform.position;
+        
         isLerping = true;
     }
 

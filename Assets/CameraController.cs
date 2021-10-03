@@ -17,8 +17,14 @@ public class CameraController : MonoBehaviour
         var tilemapManager = FindObjectOfType<TileMapManager>();
         var tilemapBounds = tilemapManager.GetTilemapBounds();
 
+        var largerBound = Math.Max(tilemapBounds.extents.x, tilemapBounds.extents.y);
+        
         GetComponent<Camera>().orthographicSize =
-            extentsToSizeRatio * Math.Max(tilemapBounds.extents.x, tilemapBounds.extents.y);
+            extentsToSizeRatio * largerBound;
+
+        var offset = largerBound * 2.0f % 2f == 0 ? new Vector3(0f, -1.5f, -10f) : new Vector3(-0.5f, -1.5f, -10f);
+
+        transform.position = tilemapBounds.center + offset;
     }
 
 }
