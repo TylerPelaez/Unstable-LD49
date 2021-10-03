@@ -23,7 +23,7 @@ public class GravityObjectKinematic : MonoBehaviour
     private List<Vector2> previousPositions = new List<Vector2>();
     private int lastPositionIndex = -1;
 
-    private bool goingToWin = false;
+    private bool goingToEscape = false;
 
     private Vector3 previousState;
     private Vector3 currentState;
@@ -104,9 +104,12 @@ public class GravityObjectKinematic : MonoBehaviour
         currentState = targetPosition;
         previousState = targetPosition;
         gravityManager.GravityObjectDoneMoving();
-        if (goingToWin)
+        if (goingToEscape && gameObject.CompareTag("Player"))
         {
             lifecycleManager.WinLevel();
+        } else if (goingToEscape)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -149,10 +152,10 @@ public class GravityObjectKinematic : MonoBehaviour
                 continue;
             }
 
-            if (gameObject.CompareTag("Player") && hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
+            if (hit.collider.isTrigger && hit.collider.gameObject.CompareTag("Win"))
             {
-                targetPosition = hit.collider.gameObject.transform.position;
-                goingToWin = true;
+                targetPosition = hit.collider.gameObject.transform.position + (Vector3)(movementDirection * 10f);
+                goingToEscape = true;
                 break;
             }
             
