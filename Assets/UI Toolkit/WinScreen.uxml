@@ -2,10 +2,17 @@
     <ui:VisualElement style="background-color: rgba(0, 0, 0, 0.69); width: 100%; height: 100%; opacity: 1;">
         <ui:VisualElement style="left: 32.5%; width: 35%; height: 100%; flex-direction: column;">
             <ui:VisualElement style="height: 22%; background-image: url(&apos;/Assets/Sprites/WinTopGraphic.png&apos;); -unity-background-scale-mode: scale-to-fit; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; top: 8%; flex-direction: column-reverse; justify-content: flex-start; align-items: center;">
-                <ui:Label text="Thank you!" display-tooltip-when-elided="true" name="ThankYou" style="bottom: auto; top: 24px; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; flex-direction: column; justify-content: flex-start; font-size: 20px; -unity-background-image-tint-color: rgba(255, 255, 255, 255);" />
+                <ui:Label text="Thank you!" display-tooltip-when-elided="true" name="ThankYou" style="bottom: auto; top: 24px; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; flex-direction: column; justify-content: flex-start; font-size: 20px; -unity-background-image-tint-color: rgb(255, 255, 255); color: rgba(255, 255, 255, 255);" />
             </ui:VisualElement>
-            <ui:VisualElement style="height: 50%; top: 13%;" />
-            <ui:VisualElement style="height: 30%;" />
+            <ui:VisualElement style="height: 50%; top: 13%; background-image: url(&apos;/Assets/Sprites/WinBox.png&apos;); -unity-background-scale-mode: scale-to-fit;">
+                <ui:Label text="Moves" display-tooltip-when-elided="true" name="Moves" />
+                <ui:Label text="55" display-tooltip-when-elided="true" name="MoveCount" />
+                <ui:VisualElement />
+                <ui:VisualElement name="CrownContainer" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="Retry" />
+            </ui:VisualElement>
+            <ui:VisualElement style="height: 14%; top: 14%;" />
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="NextButton" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
