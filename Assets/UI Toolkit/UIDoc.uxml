@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="VisualElement" style="bottom: auto; height: 100%;">
-        <ui:VisualElement name="TopBarContainer" />
+    <ui:VisualElement name="VisualElement" style="bottom: auto; height: 100%; width: 37%; left: 31.5%;">
+        <ui:VisualElement name="TopBarContainer" style="height: 15%;" />
         <ui:VisualElement name="GameContainer" style="height: 65%;">
-            <ui:VisualElement />
+            <ui:VisualElement name="RectangleBorder" style="height: 92%; background-image: url(&apos;/Assets/Sprites/Rectangle.png&apos;); -unity-background-scale-mode: stretch-to-fill;" />
             <ui:VisualElement />
         </ui:VisualElement>
-        <ui:VisualElement name="ButtonContainer">
+        <ui:VisualElement name="ButtonContainer" style="height: 20%;">
             <ui:VisualElement>
                 <ui:VisualElement>
                     <ui:Button display-tooltip-when-elided="true" enable-rich-text="false" />
