@@ -79,6 +79,12 @@ public class LifeCycleManager : MonoBehaviour
     public void WinLevel()
     {
         won = true;
+        var playerprefsmanager = FindObjectOfType<PlayerPrefsManager>();
+        if (playerprefsmanager != null)
+        {
+            playerprefsmanager.SetLevelScore(GetScore());
+        }
+        
         OnWin.Invoke();
     }
 
