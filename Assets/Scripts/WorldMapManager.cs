@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class WorldMapManager : MonoBehaviour
 {
+    public VisualTreeAsset LevelIcon;
+    
     public Texture2D filledInBackground;
     public Texture2D emptyBackground;
     public Texture2D oneCrown;
@@ -15,7 +16,8 @@ public class WorldMapManager : MonoBehaviour
     public Texture2D threeCrowns;
     
     public float levelCircleRadius;
-    public Vector2 midpoint;
+    public float midpointX;
+    public float midpointYMultiplier;
     
     private UIDocument document;
     private int levelCount;
@@ -38,16 +40,17 @@ public class WorldMapManager : MonoBehaviour
         var holder =  rootVisualElement.Q<VisualElement>("LevelHolder");
         
         float angles = 2f * Mathf.PI / levelCount;
-        
-        
-        var template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UI Toolkit/CompletedLevel.uxml");
 
+
+
+        var midpointY = Screen.height * midpointYMultiplier;
+        
         for (var i = 0; i < levelCount; i++)
         {
-            var x = midpoint.x + levelCircleRadius * Mathf.Cos(i * angles - 1.5708f);
-            var y = midpoint.y + levelCircleRadius * Mathf.Sin(i * angles - 1.5708f);
+            var x = midpointX + levelCircleRadius * Mathf.Cos(i * angles - 1.5708f);
+            var y = midpointY + levelCircleRadius * Mathf.Sin(i * angles - 1.5708f);
 
-            var element = template.Instantiate();
+            var element = LevelIcon.Instantiate();
             element.style.position = new StyleEnum<Position>(Position.Absolute);
             element.style.top = y;
             element.style.left = x;

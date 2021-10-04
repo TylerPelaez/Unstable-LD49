@@ -183,13 +183,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108b780da11750541a11aaf9036fbb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelIcon: {fileID: 9197481963319205126, guid: fe94357d56132584caa04db808441031, type: 3}
   filledInBackground: {fileID: 2800000, guid: a9243253c1b5ea4408ceaa85a3e40054, type: 3}
   emptyBackground: {fileID: 2800000, guid: e8fe6a0d0a846ff489332d8e436d662d, type: 3}
   oneCrown: {fileID: 2800000, guid: b7a17a5ea09fbc2419d068337da8af9d, type: 3}
   twoCrowns: {fileID: 2800000, guid: 99a72cca04e6002458595e58dcd884ca, type: 3}
   threeCrowns: {fileID: 2800000, guid: cf7ad6e68ace6be4fb0346ef69c2b273, type: 3}
   levelCircleRadius: 130
-  midpoint: {x: -30, y: 118}
+  midpointX: -30
+  midpointYMultiplier: 0.1638
 --- !u!1 &1906385907
 GameObject:
   m_ObjectHideFlags: 0

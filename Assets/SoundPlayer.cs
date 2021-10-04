@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using GluonGui.WorkspaceWindow.Views.Checkin.Operations;
 using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
