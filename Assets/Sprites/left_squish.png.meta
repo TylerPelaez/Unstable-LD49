@@ -1,0 +1,636 @@
+fileFormatVersion: 2
+guid: 8494949f0738b00439b057afa5067fb6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6174857730497583382
+    second: left_squish_0
+  - first:
+      213: 567986684857847453
+    second: left_squish_1
+  - first:
+      213: 4599307549091772114
+    second: left_squish_2
+  - first:
+      213: -8917195352099629518
+    second: left_squish_3
+  - first:
+      213: 5901613811911120301
+    second: left_squish_4
+  - first:
+      213: 5038336228179432137
+    second: left_squish_5
+  - first:
+      213: -1267556628874631478
+    second: left_squish_6
+  - first:
+      213: 9138455143196871078
+    second: left_squish_7
+  - first:
+      213: 8456254127375149635
+    second: left_squish_8
+  - first:
+      213: 2592194552294434550
+    second: left_squish_9
+  - first:
+      213: -6105463458089262238
+    second: left_squish_10
+  - first:
+      213: 1276043856157125766
+    second: left_squish_11
+  - first:
+      213: 6268988219266925416
+    second: left_squish_12
+  - first:
+      213: 2445281890526866554
+    second: left_squish_13
+  - first:
+      213: 7776575030583489247
+    second: left_squish_14
+  - first:
+      213: -320227344596477892
+    second: left_squish_15
+  - first:
+      213: 4913831157439735329
+    second: left_squish_16
+  - first:
+      213: -4658775727108862413
+    second: left_squish_17
+  - first:
+      213: 3130940105287430559
+    second: left_squish_18
+  - first:
+      213: -543669410800978931
+    second: left_squish_19
+  - first:
+      213: 3102160965214987396
+    second: left_squish_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: left_squish_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2612
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61912ecd36081b550800000000000000
+      internalID: 6174857730497583382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_1
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 2612
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e8a1c61e4e1e700800000000000000
+      internalID: 567986684857847453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_2
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 2612
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6336409d504df30800000000000000
+      internalID: 4599307549091772114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_3
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 2612
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23656559212cf3480800000000000000
+      internalID: -8917195352099629518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_4
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 2612
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5508c6e7eb6e150800000000000000
+      internalID: 5901613811911120301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1959
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2dd93fa14cbe540800000000000000
+      internalID: 5038336228179432137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_6
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1959
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac66c3b36fbb86ee0800000000000000
+      internalID: -1267556628874631478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_7
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 1959
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a9471ef88052de70800000000000000
+      internalID: 9138455143196871078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_8
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 1959
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a60a06356aa5570800000000000000
+      internalID: 8456254127375149635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_9
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 1959
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f66636163359f320800000000000000
+      internalID: 2592194552294434550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1306
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263267f3559054ba0800000000000000
+      internalID: -6105463458089262238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_11
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1306
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ca01c502b65b110800000000000000
+      internalID: 1276043856157125766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_12
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 1306
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8638386229beff650800000000000000
+      internalID: 6268988219266925416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_13
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 1306
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7cac8c7ce26fe120800000000000000
+      internalID: 2445281890526866554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_14
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 1306
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2f91bc9c1fbeb60800000000000000
+      internalID: 7776575030583489247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 653
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38d5fd3de25e8bf0800000000000000
+      internalID: -320227344596477892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_16
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 653
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1262171376f613440800000000000000
+      internalID: 4913831157439735329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_17
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 653
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ec671d824b85fb0800000000000000
+      internalID: -4658775727108862413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_18
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 653
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f917ea4ff65537b20800000000000000
+      internalID: 3130940105287430559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_19
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 653
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0436f52d8f7478f0800000000000000
+      internalID: -543669410800978931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left_squish_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 653
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484e8bf36f61d0b20800000000000000
+      internalID: 3102160965214987396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
