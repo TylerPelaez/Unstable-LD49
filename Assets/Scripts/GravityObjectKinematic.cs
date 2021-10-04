@@ -27,13 +27,19 @@ public class GravityObjectKinematic : MonoBehaviour
 
     private Vector3 previousState;
     private Vector3 currentState;
-    
+
+    private Animator animator;
+    private SpriteRenderer sprite;
+
     private void Start()
     {
         previousState = transform.position;
         currentState = transform.position;
         _collider = GetComponent<Collider2D>();
         gravityManager = FindObjectOfType<GravityManager>();
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
         if (gravityManager != null)
         {
             gravityManager.OnChangeGravity.AddListener(this.ChangeDirection);
@@ -115,23 +121,34 @@ public class GravityObjectKinematic : MonoBehaviour
 
     public void ChangeDirection(Directions _direction)
     {
+        if(animator != null)
+            animator.SetTrigger("squish");
+
         velocity = Vector2.zero;
         switch (_direction)
         {
             case Directions.UP:
                 movementDirection = Vector2.up;
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+                sprite.flipX = false;
                 break;
 
             case Directions.DOWN:
                 movementDirection = Vector2.down;
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                sprite.flipX = false;
                 break;
 
             case Directions.LEFT:
                 movementDirection = Vector2.left;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                sprite.flipX = false;
                 break;
 
             case Directions.RIGHT:
                 movementDirection = Vector2.right;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                sprite.flipX = true;
                 break;
         }
         
