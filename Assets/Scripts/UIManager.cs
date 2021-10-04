@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
         redoButton = rootVisualElement.Q<Button>("RedoButton");
         menuButton = rootVisualElement.Q<Button>("MenuButton");
         gameMoveCountLabel = rootVisualElement.Q<Label>("MoveCount");
+        rootVisualElement.Q<Label>("Level").text = "Level " + SceneManager.GetActiveScene().buildIndex;
 
         lifeCycleManager = FindObjectOfType<LifeCycleManager>();
         if (lifeCycleManager != null)
@@ -111,11 +113,12 @@ public class UIManager : MonoBehaviour
         winScreenMoveCount = rootVisualElement.Q<Label>("MoveCount");
         
         winScreenRetryButton = rootVisualElement.Q<Button>("Retry");
-        winScreenNextLevelButton= rootVisualElement.Q<Button>("NextButton");
-        
+        winScreenNextLevelButton = rootVisualElement.Q<Button>("NextButton");
+        var winScreenReturnToMap = rootVisualElement.Q<Button>("Map");
                     
         winScreenRetryButton.RegisterCallback<ClickEvent>(ev => lifeCycleManager.RestartLevel());
         winScreenNextLevelButton.RegisterCallback<ClickEvent>(ev => lifeCycleManager.GotoNextLevel());
+        winScreenReturnToMap.RegisterCallback<ClickEvent>(ev => lifeCycleManager.GoToMap());
         
         var finalMoveCount = lifeCycleManager.GetMoveCount();
         var score = lifeCycleManager.GetScore();

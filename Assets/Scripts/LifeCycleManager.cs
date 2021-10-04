@@ -103,6 +103,11 @@ public class LifeCycleManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void GoToMap()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public bool CanUndo()
     {
         return lastMoveIndex >= 0;
