@@ -14,8 +14,6 @@ public class TileMapManager : MonoBehaviour
 
         var tilemapSize = tilemap.cellBounds;
 
-        Debug.Log(tilemap.localBounds);
-
         for (int i = tilemapSize.x; i < tilemapSize.xMax; i++)
         {
             for (int j = tilemapSize.y; j < tilemapSize.yMax; j++)

@@ -19,12 +19,6 @@ public class Arrow : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void changeDirection(Directions direction)
     {
         animator.SetTrigger("unhide");

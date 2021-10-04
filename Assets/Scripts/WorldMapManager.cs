@@ -71,7 +71,6 @@ public class WorldMapManager : MonoBehaviour
             else
             {
                 var score = playerPrefsManager.GetLevelScore(levelToCheck);
-                Debug.Log(score);
                 switch (score)
                 {
                     case LifeCycleManager.Score.HIGH:
