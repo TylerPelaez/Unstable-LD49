@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="align-items: center; justify-content: space-between; height: 50%;">
+        <ui:Label text="PLAY" display-tooltip-when-elided="true" name="Play" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 18px; color: rgba(255, 255, 255, 255);" />
+        <ui:Label text="CREDITS" display-tooltip-when-elided="true" name="Credits" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 18px; color: rgba(255, 255, 255, 255);" />
+        <ui:Label text="QUIT" display-tooltip-when-elided="true" name="Quit" style="-unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 18px; color: rgba(255, 255, 255, 255);" />
+    </ui:VisualElement>
+</ui:UXML>

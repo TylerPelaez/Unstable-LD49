@@ -25,7 +25,7 @@ public class WorldMapManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        levelCount = SceneManager.sceneCountInBuildSettings - 1;
+        levelCount = SceneManager.sceneCountInBuildSettings - 2;
         document = GetComponent<UIDocument>();
         playerPrefsManager = FindObjectOfType<PlayerPrefsManager>();
         if (document == null || playerPrefsManager == null)
@@ -54,7 +54,7 @@ public class WorldMapManager : MonoBehaviour
             var crownVE = element.Q<VisualElement>("Crowns");
             var numberVE = element.Q<Label>("Number");
             
-            int levelToCheck = i + 1;
+            int levelToCheck = i + 1; // build index 0 is title, so we add + 1
 
             numberVE.text = levelToCheck.ToString();
 

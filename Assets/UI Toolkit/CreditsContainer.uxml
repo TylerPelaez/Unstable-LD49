@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="CreditsContainer" style="width: 90%; flex-direction: column; align-items: center; height: 70%; justify-content: center;">
+        <ui:VisualElement style="width: 110%; justify-content: space-between; flex-direction: row; left: auto;">
+            <ui:Label text="Victoria (@kvebox) - Art" display-tooltip-when-elided="true" style="-unity-font-definition: none; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); font-size: 20px; align-items: stretch; -unity-text-align: middle-center; color: rgb(255, 255, 255);" />
+            <ui:Label text="Tyler (@defectivemelon) - Programming/Sound" display-tooltip-when-elided="true" style="-unity-font-definition: none; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); font-size: 20px; -unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+            <ui:Label text="Jhonys (@jhonys) -Programming" display-tooltip-when-elided="true" style="-unity-font-definition: none; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); font-size: 20px; -unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:Label text="Back" display-tooltip-when-elided="true" name="Back" style="-unity-font-definition: none; -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); font-size: 20px; -unity-text-align: upper-center; top: 54px; color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+</ui:UXML>

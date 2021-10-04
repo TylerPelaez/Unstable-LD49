@@ -105,7 +105,7 @@ public class LifeCycleManager : MonoBehaviour
 
     public void GoToMap()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings -1); // Map should always be the last scene
     }
 
     public bool CanUndo()

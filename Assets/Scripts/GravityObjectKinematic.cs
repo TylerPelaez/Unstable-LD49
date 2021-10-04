@@ -24,13 +24,16 @@ public class GravityObjectKinematic : MonoBehaviour
     private int lastPositionIndex = -1;
 
     private bool goingToEscape = false;
-
+    private bool shouldPlayClip = false;
+    
     private Vector3 previousState;
     private Vector3 currentState;
 
     private Animator animator;
     private SpriteRenderer sprite;
 
+    private SoundPlayer soundPlayer;
+    
     private void Start()
     {
         previousState = transform.position;
@@ -39,6 +42,7 @@ public class GravityObjectKinematic : MonoBehaviour
         gravityManager = FindObjectOfType<GravityManager>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        soundPlayer = GetComponent<SoundPlayer>();
 
         if (gravityManager != null)
         {
@@ -117,6 +121,13 @@ public class GravityObjectKinematic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (shouldPlayClip)
+        {
+            soundPlayer.PlayRandomClip();
+        }
+
+        shouldPlayClip = false;
     }
 
     public void ChangeDirection(Directions _direction)
@@ -181,6 +192,12 @@ public class GravityObjectKinematic : MonoBehaviour
                              (-movementDirection * hit.collider.bounds.extents) +
                              (-movementDirection * totalOffset) + 
                              (-movementDirection * _collider.bounds.extents);
+            
+            if (targetPosition != (Vector2)transform.position)
+            {
+                shouldPlayClip = true;
+            }
+
             break;
         }
 
