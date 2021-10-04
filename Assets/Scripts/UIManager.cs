@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject mainUI;
     public GameObject winScreenUI;
+    public GameObject settingsUI;
     
     private static readonly Color GREYEDOUT_TINT = new Color(0.2941177f, 0.2666667f, 0.2666667f, 1f);
     private static readonly ManipulatorActivationFilter DEFAULT_FILTER = new ManipulatorActivationFilter{ button = MouseButton.LeftMouse };

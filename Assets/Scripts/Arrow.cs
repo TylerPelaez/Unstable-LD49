@@ -16,6 +16,13 @@ public class Arrow : MonoBehaviour
             gravityManager.OnChangeGravity.AddListener(changeDirection);
         }
 
+        var tilemapManager = FindObjectOfType<TileMapManager>();
+        if (tilemapManager)
+        {
+            transform.position = tilemapManager.transform.position + tilemapManager.GetTilemapBounds().center;
+        }
+        
+
         animator = GetComponent<Animator>();
     }
 

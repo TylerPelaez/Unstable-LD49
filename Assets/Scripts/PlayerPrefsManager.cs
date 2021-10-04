@@ -6,10 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
+    private static PlayerPrefsManager instance;
+    
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     private String GetLevelKey(int levelNumber)
