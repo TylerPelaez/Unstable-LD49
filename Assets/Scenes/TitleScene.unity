@@ -364,6 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicPlayer: {fileID: 1713972336}
   AmbiencePlayer: {fileID: 226039788}
+  mixer: {fileID: 24100000, guid: 04c1f02eec7ff774aac753f47462fbdd, type: 2}
 --- !u!4 &912460785
 Transform:
   m_ObjectHideFlags: 0

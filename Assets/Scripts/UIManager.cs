@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
     private static readonly Color GreyCrownTint = new Color(0.4196078f, 0.4196078f, 0.4196078f, 1f);
     
     private LifeCycleManager lifeCycleManager;
+    private SoundManager soundManager;
     void Start()
     {
         var rootVisualElement = mainUI.GetComponent<UIDocument>().rootVisualElement;
@@ -65,13 +66,36 @@ public class UIManager : MonoBehaviour
             menuButton.RegisterCallback<ClickEvent>(ev => ShowMenu());
             lifeCycleManager.OnWin.AddListener(ShowWinScreen);
         }
+
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     void ShowMenu()
     {
+        settingsUI.SetActive(true);
         
+        var rve = settingsUI.GetComponent<UIDocument>().rootVisualElement;
+
+
+        rve.Q<Slider>("Music").value = soundManager.GetMusicVolume();
+        rve.Q<Slider>("SFX").value = soundManager.GetSFXVolume();
+        rve.Q<Slider>("Ambience").value = soundManager.GetAmbienceVolume();
+
+        rve.Q<Label>("Resume").RegisterCallback<ClickEvent>(ev=> HideMenu());
+        rve.Q<Slider>("Music").RegisterValueChangedCallback(ev => soundManager.SetMusicVolume(ev.newValue));
+        rve.Q<Slider>("SFX").RegisterValueChangedCallback(ev => soundManager.SetSFXVolume(ev.newValue));
+        rve.Q<Slider>("Ambience").RegisterValueChangedCallback(ev => soundManager.SetAmbienceVolume(ev.newValue));
+        rve.Q<Label>("Quit").RegisterCallback<ClickEvent>(ev => lifeCycleManager.GoToTitle());
+        
+
+        lifeCycleManager.SetMenuUp(true);
     }
-    
+
+    void HideMenu()
+    {
+        settingsUI.SetActive(false);
+        lifeCycleManager.SetMenuUp(false);
+    }
     void Update()
     {
         UpdateButton(redoButton, lifeCycleManager.CanRedo());

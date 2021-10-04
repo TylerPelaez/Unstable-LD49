@@ -33,6 +33,7 @@ public class LifeCycleManager : MonoBehaviour
     private SoundPlayer soundPlayer;
 
     private bool won = false;
+    private bool menuUp = false;
     
     public void Start()
     {
@@ -47,7 +48,7 @@ public class LifeCycleManager : MonoBehaviour
 
     private void Update()
     {
-        if (won)
+        if (won || menuUp)
         {
             return;
         }
@@ -93,6 +94,11 @@ public class LifeCycleManager : MonoBehaviour
         OnWin.Invoke();
     }
 
+    public void SetMenuUp(bool value)
+    {
+        menuUp = value;
+    }
+
     public void GotoNextLevel()
     {
         var sceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
@@ -111,6 +117,11 @@ public class LifeCycleManager : MonoBehaviour
     public void GoToMap()
     {
         SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings -1); // Map should always be the last scene
+    }
+
+    public void GoToTitle()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public bool CanUndo()
