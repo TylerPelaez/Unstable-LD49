@@ -90,7 +90,12 @@ public class LifeCycleManager : MonoBehaviour
 
     public void GotoNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        var sceneToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.sceneCountInBuildSettings == sceneToLoad)
+        {
+            sceneToLoad = 0;
+        }
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     public void RestartLevel()

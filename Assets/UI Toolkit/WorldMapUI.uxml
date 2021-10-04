@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="width: 100%; height: 100%; background-image: url(&apos;/Assets/Sprites/Level Background.png&apos;); -unity-background-scale-mode: scale-and-crop;">
+        <ui:VisualElement style="width: 27%; height: 83%; left: 36.5%; top: 8.5%; align-items: center;">
+            <ui:VisualElement style="height: 13%; width: 100%; background-image: url(&apos;/Assets/Sprites/TopbarLevel.png&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); -unity-background-scale-mode: scale-to-fit;" />
+            <ui:Label text="THE NEST" display-tooltip-when-elided="true" style="height: 7%; top: 1px; -unity-text-align: middle-center; background-color: rgba(255, 255, 255, 0); -unity-font: url(&apos;/Assets/UI Toolkit/Righteous-Regular.ttf&apos;); -unity-font-definition: none; font-size: 30px; color: rgb(255, 255, 255);" />
+            <ui:VisualElement style="background-image: url(&apos;/Assets/Sprites/Group 25.png&apos;); width: 100%; height: 10px; align-items: center; -unity-background-scale-mode: scale-to-fit; top: 3%;" />
+            <ui:VisualElement name="LevelHolder" style="top: 8%; height: 59%;" />
+            <ui:VisualElement style="background-image: url(&apos;/Assets/Sprites/Group 26.png&apos;); height: 39px; width: 90%; -unity-background-scale-mode: scale-to-fit; top: 107px; bottom: 0; align-items: center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
