@@ -31,6 +31,7 @@ public class GravityObjectKinematic : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer sprite;
+    private TrailRenderer trailRenderer;
 
     private SoundPlayer soundPlayer;
     
@@ -43,6 +44,7 @@ public class GravityObjectKinematic : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         soundPlayer = GetComponent<SoundPlayer>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         if (gravityManager != null)
         {
@@ -127,6 +129,11 @@ public class GravityObjectKinematic : MonoBehaviour
             soundPlayer.PlayRandomClip();
         }
 
+        if (trailRenderer != null)
+        {
+            trailRenderer.enabled = true;
+        }
+
         shouldPlayClip = false;
     }
 
@@ -167,6 +174,9 @@ public class GravityObjectKinematic : MonoBehaviour
         RaycastHit2D[] hits;
         hits = Physics2D.RaycastAll(transform.position, movementDirection, 2000f);
         float totalOffset = 0f;
+        bool objectAdjacent = false;
+        
+        // target position check
         foreach (var hit in hits)
         {
             if (hit.collider == _collider)
@@ -177,6 +187,10 @@ public class GravityObjectKinematic : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Object") || hit.collider.gameObject.CompareTag("Player"))
             {
                 totalOffset += hit.collider.bounds.size.x;
+                if (hit.collider.transform.position == transform.position + (Vector3) movementDirection)
+                {
+                    objectAdjacent = true;
+                }
                 continue;
             }
 
@@ -193,14 +207,38 @@ public class GravityObjectKinematic : MonoBehaviour
                              (-movementDirection * totalOffset) + 
                              (-movementDirection * _collider.bounds.extents);
             
-            if (targetPosition != (Vector2)transform.position)
-            {
-                shouldPlayClip = true;
-            }
-
             break;
         }
 
+        if (trailRenderer != null)
+        {
+            // Also check if anything is directly behind object
+            hits = Physics2D.RaycastAll(transform.position, -movementDirection, 1f);
+            foreach (var hit in hits)
+            {
+                if (hit.collider == _collider)
+                {
+                    continue;
+                }
+                if (hit.collider.gameObject.CompareTag("Object"))
+                {
+                    if (hit.collider.transform.position == transform.position - (Vector3) movementDirection)
+                    {
+                        trailRenderer.enabled = false;
+                    }
+                }
+            }
+        }
+
+        
+        
+        if (!objectAdjacent && targetPosition != (Vector2)transform.position)
+        {
+            shouldPlayClip = true;
+        }
+
+        targetPosition = new Vector2(RoundToNearestHalf(targetPosition.x), RoundToNearestHalf(targetPosition.y));
+        
         if (lastPositionIndex < previousPositions.Count - 1)
         {
             previousPositions.RemoveRange(lastPositionIndex + 1, previousPositions.Count - (lastPositionIndex + 1));
@@ -214,6 +252,11 @@ public class GravityObjectKinematic : MonoBehaviour
         isLerping = true;
     }
 
+    private static float RoundToNearestHalf(float a)
+    {
+        return a = Mathf.Round(a * 2f) * 0.5f;
+    }
+    
     private void Undo()
     {
         if (lastPositionIndex < 0 || isLerping) // islerping shouldn't happen but...

@@ -30,6 +30,7 @@ public class LifeCycleManager : MonoBehaviour
     private int lastMoveIndex = -1;
 
     private GravityManager gravityManager;
+    private SoundPlayer soundPlayer;
 
     private bool won = false;
     
@@ -40,6 +41,8 @@ public class LifeCycleManager : MonoBehaviour
         {
             gravityManager.OnChangeGravity.AddListener(OnChangeGravity);
         }
+
+        soundPlayer = GetComponent<SoundPlayer>();
     }
 
     private void Update()
@@ -84,6 +87,8 @@ public class LifeCycleManager : MonoBehaviour
         {
             playerprefsmanager.SetLevelScore(GetScore());
         }
+        
+        soundPlayer.PlayRandomClip();
         
         OnWin.Invoke();
     }
